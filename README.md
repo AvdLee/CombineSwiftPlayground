@@ -47,7 +47,7 @@ _Credits to [this](https://github.com/freak4pc/rxswift-to-combine-cheatsheet) re
 - [ ] dropFirst(3)
 - [ ] drop(untilOutputFrom:)
 - [ ] drop(while:), tryDrop(while:)
-- [ ] sink
+- [x] sink
 - [ ] subscribe(on:)
 - [ ] collect(3) 
 - [ ] last
