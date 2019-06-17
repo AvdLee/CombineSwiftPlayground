@@ -1,15 +1,8 @@
 # A Swift Playground explaining the concepts of the new Combine framework
 This playground will contain all operators available in Combine.
 
-### Playgrounds not working with Combine
-Right now, it seems that Playgrounds do not support running Combine and result in the following error:
-
-```
-Couldn't lookup symbols: 
-    type metadata accessor for Combine.Publishers.Just 
-```
-
-I filed a radar **FB6152991**.
+### Playgrounds require Xcode beta 2 and up
+Xcode beta 1 didn't support using Combine in playgrounds. For this you need at least Xcode beta 2. MacOS Catalina is not required.
 
 ### Implemented operators:
 _Credits to [this](https://github.com/freak4pc/rxswift-to-combine-cheatsheet) repo for the list of operators_
