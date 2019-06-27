@@ -7,24 +7,48 @@ import Combine
  A `Publishers.Future` creates a new `Publisher` that eventually produces one value and then finishes or fails.
  - Allows you to call custom methods and return a Result.success or Result.failure
  */
-enum ValidationError: Error { }
+struct User {
+    let id: Int
+    let name: String
+}
+let users = [User(id: 0, name: "Antoine"), User(id: 1, name: "Henk"), User(id: 2, name: "Bart")]
 
-func isWinningLotteryNumber(_ number: Int, completion: (_ winning: Bool) -> Void) {
-    let winningLotteryNumbers = [0, 3, 5, 8]
-    completion(winningLotteryNumbers.contains(number))
+enum FetchError: Error {
+    case userNotFound
 }
 
-let lotteryPublisher = PassthroughSubject<Int, ValidationError>()
+func fetchUser(for userId: Int, completion: (_ result: Result<User, FetchError>) -> Void) {
+    if let user = users.first(where: { $0.id == userId }) {
+        completion(Result.success(user))
+    } else {
+        completion(Result.failure(FetchError.userNotFound))
+    }
+}
 
-lotteryPublisher.flatMap { number  in
-    return Publishers.Future { promise in
-        isWinningLotteryNumber(number) { (winning) in
-            promise(.success(winning))
+let fetchUserPublisher = PassthroughSubject<Int, FetchError>()
+
+fetchUserPublisher
+    .flatMap { userId -> Publishers.Future<User, FetchError> in
+        return Publishers.Future { promise in
+            fetchUser(for: userId) { (result) in
+                switch result {
+                case .success(let user):
+                    promise(.success(user))
+                case .failure(let error):
+                    promise(.failure(error))
+                }
+            }
         }
     }
-}.sink { winning in
-    print("Did someone win? \(winning)")
-}
+    .map { user in user.name }
+    .catch({ (error) -> Publishers.Just<String> in
+        print("Error occurred: \(error)")
+        return Publishers.Just("Not found")
+    })
+    .sink { result in
+        print("User is \(result)")
+    }
 
-lotteryPublisher.send((0..<10).randomElement()!)
+fetchUserPublisher.send(0)
+fetchUserPublisher.send(5)
 //: [Next](@next)
