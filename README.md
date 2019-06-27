@@ -10,12 +10,15 @@ The playground is a paged playground and is built up in several chapters
 - Foundation and Combine
 - @Published property and bindings
 - Memory management explained with `AnyCancellable`
+- Flatmap and matching error types
 
 More to come!
 
 ## Playgrounds require Xcode beta 2 and up
 Xcode beta 1 didn't support using Combine in playgrounds. For this you need at least Xcode beta 2. MacOS Catalina is not required.
 
+## Example of a playground page
+![](Assets/flatmap_playground_example.png)
 
 ## Interesting resources
 Some interesting resources regarding Combine.

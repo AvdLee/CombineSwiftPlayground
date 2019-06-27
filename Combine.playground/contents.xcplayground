@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' display-mode='raw'>
+<playground version='6.0' target-platform='ios' display-mode='rendered'>
     <pages>
         <page name='What is Combine'/>
         <page name='Publishers &amp; Subscribers'/>
@@ -7,5 +7,6 @@
         <page name='Foundation and Combine'/>
         <page name='@Published properties'/>
         <page name='Memory Management'/>
+        <page name='Flatmap and error types'/>
     </pages>
 </playground>
