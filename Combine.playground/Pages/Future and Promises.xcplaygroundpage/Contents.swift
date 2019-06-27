@@ -27,5 +27,4 @@ lotteryPublisher.flatMap { number  in
 }
 
 lotteryPublisher.send((0..<10).randomElement()!)
-
 //: [Next](@next)
