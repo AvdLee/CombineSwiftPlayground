@@ -5,9 +5,7 @@ import Combine
  [Previous](@previous)
  ## Flatmap and matching error types
  Flatmapping into a new `Publisher` type requires to match the original streams types.
- */
-/*:
- ##### Matching error types
+ 
  Using `mapError` to change the `DataTaskPublisher.URLError` to our own `RequestError` type
  */
 enum RequestError: Error {
