@@ -3,12 +3,9 @@ import UIKit
 import Combine
 /*:
  [Previous](@previous)
- ## @Published properties
- A [Property Wrapper](https://www.avanderlee.com/swift/property-wrappers/) that adds a `Publisher` to any property.
-
- _Note: Xcode beta 2 does not support running this Playground page with the @Published property unfortunately._
+ ## Memory Management
+ Correct memory management using the `AnyCancellable` makes sure you're not retaining any references.
  */
-
 final class HomeViewController: UIViewController {
 
     private let tableView = UITableView()
