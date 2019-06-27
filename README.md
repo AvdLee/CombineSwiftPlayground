@@ -8,6 +8,7 @@ The playground is a paged playground and is built up in several chapters
 - Publishers & Subscribers
 - Rules of subscriptions
 - Foundation and Combine
+- @Published property and bindings
 
 More to come!
 
