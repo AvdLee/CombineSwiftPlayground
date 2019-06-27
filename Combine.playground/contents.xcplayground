@@ -6,5 +6,6 @@
         <page name='Rules of subscriptions'/>
         <page name='Foundation and Combine'/>
         <page name='@Published properties'/>
+        <page name='Memory Management'/>
     </pages>
 </playground>

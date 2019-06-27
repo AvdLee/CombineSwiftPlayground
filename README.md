@@ -9,6 +9,7 @@ The playground is a paged playground and is built up in several chapters
 - Rules of subscriptions
 - Foundation and Combine
 - @Published property and bindings
+- Memory management explained with `AnyCancellable`
 
 More to come!
 
