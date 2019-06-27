@@ -19,7 +19,9 @@ final class FormViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.$isSubmitAllowed.receive(on: DispatchQueue.main).assign(to: \.isEnabled, on: submitButton)
+        viewModel.$isSubmitAllowed
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.isEnabled, on: submitButton)
     }
 }
 
