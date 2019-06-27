@@ -11,6 +11,8 @@ The playground is a paged playground and is built up in several chapters
 - @Published property and bindings
 - Memory management explained with `AnyCancellable`
 - Flatmap and matching error types
+- Combining Publishers
+- Future and Promises
 
 More to come!
 

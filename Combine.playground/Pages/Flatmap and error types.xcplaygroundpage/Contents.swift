@@ -4,7 +4,7 @@ import Combine
 /*:
  [Previous](@previous)
  ## Flatmap and matching error types
- Flatmapping into a new `Publisher` type requires to match the original streams types.
+ Flatmapping into a new `Publisher` type requires to match the original streams types. It allows you to take a value and return a new `Publisher`.
  
  Using `mapError` to change the `DataTaskPublisher.URLError` to our own `RequestError` type
  */
@@ -20,7 +20,7 @@ URLPublisher.flatMap { requestURL in
         }
     }.sink { result in
         print("Request finished!")
-        let image = UIImage(data: result.data)
+        _ = UIImage(data: result.data)
     }
 URLPublisher.send(URL(string: "https://httpbin.org/image/jpeg")!)
 //: [Next](@next)

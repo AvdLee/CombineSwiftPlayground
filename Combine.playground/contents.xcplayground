@@ -8,5 +8,7 @@
         <page name='@Published properties'/>
         <page name='Memory Management'/>
         <page name='Flatmap and error types'/>
+        <page name='Combining Publishers'/>
+        <page name='Future and Promises'/>
     </pages>
 </playground>
