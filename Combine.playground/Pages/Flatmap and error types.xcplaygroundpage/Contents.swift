@@ -24,3 +24,4 @@ URLPublisher.flatMap { requestURL in
     }
 URLPublisher.send(URL(string: "https://httpbin.org/image/jpeg")!)
 //: [Next](@next)
+
