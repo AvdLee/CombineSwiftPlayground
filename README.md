@@ -13,6 +13,7 @@ The playground is a paged playground and is built up in several chapters
 - Flatmap and matching error types
 - Combining Publishers
 - Future and Promises
+- Custom `Publisher` and UIKit extensions
 
 More to come!
 
