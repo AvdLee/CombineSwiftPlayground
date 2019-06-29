@@ -19,7 +19,7 @@ final class UIControlSubscription<SubscriberType: Subscriber, Control: UIControl
 
     func request(_ demand: Subscribers.Demand) {
         guard demand > 0 else { return }
-        subscriber?.receive(control)
+        _ = subscriber?.receive(control)
     }
 
     func cancel() {
@@ -27,7 +27,7 @@ final class UIControlSubscription<SubscriberType: Subscriber, Control: UIControl
     }
 
     @objc private func eventHandler() {
-        subscriber?.receive(control)
+        _ = subscriber?.receive(control)
     }
 
     deinit {
