@@ -6,7 +6,7 @@ import Combine
  ## Custom UIKit Publishers
  Unfortunately, not all UIKit elements are ready to use with Combine. A UISwitch, for example, does not support KVO. Therefore, custom UIKit publishers.
  */
-
+/// A custom subscription to capture UIControl target events.
 final class UIControlSubscription<SubscriberType: Subscriber, Control: UIControl>: Subscription where SubscriberType.Input == Control {
     private var subscriber: SubscriberType?
     private let control: Control
@@ -18,8 +18,7 @@ final class UIControlSubscription<SubscriberType: Subscriber, Control: UIControl
     }
 
     func request(_ demand: Subscribers.Demand) {
-        guard demand > 0 else { return }
-        _ = subscriber?.receive(control)
+        // We do nothing here as we only want to send events when they occur.
     }
 
     func cancel() {
@@ -35,6 +34,7 @@ final class UIControlSubscription<SubscriberType: Subscriber, Control: UIControl
     }
 }
 
+/// A custom `Publisher` to work with our custom `UIControlSubscription`.
 struct UIControlPublisher<Control: UIControl>: Publisher {
 
     typealias Output = Control
@@ -58,6 +58,8 @@ struct UIControlPublisher<Control: UIControl>: Publisher {
         subscriber.receive(subscription: UIControlSubscription(subscriber: subscriber, control: control, event: controlEvents))
     }
 }
+
+/// Extending the `UIControl` types to be able to produce a `UIControl.Event` publisher.
 protocol CombineCompatible { }
 extension UIControl: CombineCompatible { }
 extension CombineCompatible where Self: UIControl {
@@ -66,21 +68,40 @@ extension CombineCompatible where Self: UIControl {
     }
 }
 
+/*:
+ ## Responding to UITouch events
+ #### With the above, we can easily create a publisher to listen for `UIButton` events as an example.
+ */
+/// With the above, we can easily create a publisher to listen for `UIButton` events as an example.
+let button = UIButton()
+let subscription = button.publisher(for: .touchUpInside).sink { button in
+    print("Button is pressed!")
+}
+button.sendActions(for: .touchUpInside)
+subscription.cancel()
+
+/*:
+ ## Solving the UISwitch KVO problem
+ #### As the `UISwitch.isOn` property does not support KVO this extension can become handy.
+ */
 extension CombineCompatible where Self: UISwitch {
+    /// As the `UISwitch.isOn` property does not support KVO this publisher can become handy.
+    /// The only downside is that it does not work with programmatically changing `isOn`, but it only responds to UI changes.
     var isOnPublisher: AnyPublisher<Bool, Never> {
         return publisher(for: [.allEditingEvents, .valueChanged]).map { $0.isOn }.eraseToAnyPublisher()
     }
 }
 
-let buttonSwitch = UISwitch()
+let switcher = UISwitch()
+switcher.isOn = false
 let submitButton = UIButton()
 submitButton.isEnabled = false
-buttonSwitch.isOn = false
 
-buttonSwitch.isOnPublisher.assign(to: \.isEnabled, on: submitButton)
+switcher.isOnPublisher.assign(to: \.isEnabled, on: submitButton)
 
-buttonSwitch.isOn = true
-buttonSwitch.sendActions(for: .valueChanged)
+/// As the `isOn` property is not sending out `valueChanged` events itself, we need to do this manually here.
+/// This is the same behavior as it would be if the user switches the `UISwitch` in-app.
+switcher.isOn = true
+switcher.sendActions(for: .valueChanged)
 print(submitButton.isEnabled)
-
 //: [Next](@next)
