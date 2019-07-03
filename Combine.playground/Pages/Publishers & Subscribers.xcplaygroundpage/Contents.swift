@@ -8,7 +8,7 @@ import Combine
  - ..a subscriber subscribes to receive all those updates
 
  */
-let publisher = Publishers.Just(28)
+let publisher = Just(28)
 
 // This creates a `Subscriber` on the `Just a 28` Publisher
 publisher

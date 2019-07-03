@@ -28,8 +28,8 @@ func fetchUser(for userId: Int, completion: (_ result: Result<User, FetchError>)
 let fetchUserPublisher = PassthroughSubject<Int, FetchError>()
 
 fetchUserPublisher
-    .flatMap { userId -> Publishers.Future<User, FetchError> in
-        return Publishers.Future { promise in
+    .flatMap { userId -> Future<User, FetchError> in
+        return Future { promise in
             fetchUser(for: userId) { (result) in
                 switch result {
                 case .success(let user):
@@ -41,9 +41,9 @@ fetchUserPublisher
         }
     }
     .map { user in user.name }
-    .catch({ (error) -> Publishers.Just<String> in
+    .catch({ (error) -> Just<String> in
         print("Error occurred: \(error)")
-        return Publishers.Just("Not found")
+        return Just("Not found")
     })
     .sink { result in
         print("User is \(result)")

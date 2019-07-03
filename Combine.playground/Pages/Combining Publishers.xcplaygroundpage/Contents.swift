@@ -13,9 +13,10 @@ enum FormError: Error { }
 let usernamePublisher = PassthroughSubject<String, FormError>()
 let passwordPublisher = PassthroughSubject<String, FormError>()
 
-let validatedCredentials = Publishers.CombineLatest(usernamePublisher, passwordPublisher, transform: { (username, password) -> (String, String) in
+let validatedCredentials = Publishers.CombineLatest(usernamePublisher, passwordPublisher)
+    .map { (username, password) -> (String, String) in
         return (username, password)
-    })
+    }
     .map({ (username, password) -> Bool in
         !username.isEmpty && !password.isEmpty && password.count > 12
     })
