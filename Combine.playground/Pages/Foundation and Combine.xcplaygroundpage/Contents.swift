@@ -22,7 +22,7 @@ NotificationCenter.default.publisher(for: .NSSystemClockDidChange)
  ##### KeyPath binding to NSObject instances
  */
 let ageLabel = UILabel()
-Publishers.Just(28)
+Just(28)
     .map { "Age is \($0)" }
     .assign(to: \.text, on: ageLabel)
 //: [Next](@next)
