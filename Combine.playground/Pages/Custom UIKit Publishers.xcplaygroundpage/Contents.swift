@@ -105,4 +105,51 @@ switcher.isOnPublisher.assign(to: \.isEnabled, on: submitButton)
 switcher.isOn = true
 switcher.sendActions(for: .valueChanged)
 print(submitButton.isEnabled)
+
+class ActionTarget {
+    let handler: (Any) -> Void
+
+    deinit {
+        print("JA")
+    }
+
+    init<A>(handler: @escaping (A) -> Void) {
+        self.handler = {
+            handler($0 as! A)
+        }
+    }
+
+    @objc func handle(_ action: Any) {
+        handler(action)
+    }
+}
+
+extension UIControl {
+    var eventPublisher: AnyPublisher<UIControl.Event, Never> {
+        let subject = PassthroughSubject<UIControl.Event, Never>()
+        let target = ActionTarget {
+            _ = subject.send($0)
+        }
+
+        addTarget(target, action: #selector(ActionTarget.handle), for: .allTouchEvents)
+
+        return AnyPublisher(subject)
+//        return AnyPublisher { subscriber in
+//            subscriber.receive(subscription: Subscriptions.empty)
+//            let target = ActionTarget {
+//                _ = subscriber.receive($0)
+//            }
+//
+//            self.addTarget(target, action: #selector(ActionTarget.handle), for: .allTouchEvents)
+//        }
+    }
+}
+
+let testButton = UIButton()
+testButton.eventPublisher.sink { (event) in
+    print("Received event")
+}
+
+testButton.sendActions(for: .touchDown)
+
 //: [Next](@next)

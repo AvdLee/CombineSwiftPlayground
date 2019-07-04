@@ -25,10 +25,11 @@ final class HomeViewController: UIViewController {
             .handleEvents(receiveCancel: {
                 print("Foreground subscriber cancelled!")
             })
-            .sink { [unowned self] _ in
+            .sink { [weak self] _ in
                 print("Reloading tableview!")
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
+
         foregroundSubscriber = AnyCancellable(foregroundSubscriberCanceller)
     }
 }
