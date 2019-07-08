@@ -5,6 +5,8 @@ import Combine
  [Previous](@previous)
  ## Debugging
  Operators which help to debug Combine streams and implementations.
+
+ More info: [https://www.avanderlee.com/debugging/combine-swift/‎](https://www.avanderlee.com/debugging/combine-swift/‎)
  */
 
 enum ExampleError: Swift.Error {
