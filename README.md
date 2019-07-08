@@ -14,6 +14,7 @@ The playground is a paged playground and is built up in several chapters
 - Combining Publishers
 - Future and Promises
 - Custom `Publisher` and UIKit extensions
+- Debugging publishers
 
 More to come!
 
