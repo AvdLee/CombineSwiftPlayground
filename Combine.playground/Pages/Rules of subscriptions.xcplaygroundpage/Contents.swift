@@ -13,8 +13,6 @@ enum ExampleError: Swift.Error {
 }
 
 let subject = PassthroughSubject<String, ExampleError>()
-
-//let publisher = Publisher<String, ExampleError>(subject: subject)
 subject.handleEvents(receiveSubscription: { (subscription) in
     print("New subscription!")
 }, receiveOutput: { _ in
