@@ -20,6 +20,7 @@ let validatedCredentials = Publishers.CombineLatest(usernamePublisher, passwordP
     .map({ (username, password) -> Bool in
         !username.isEmpty && !password.isEmpty && password.count > 12
     })
+    .replaceError(with: false)
     .sink { (valid) in
         print("CombineLatest: Are the credentials valid: \(valid)")
     }

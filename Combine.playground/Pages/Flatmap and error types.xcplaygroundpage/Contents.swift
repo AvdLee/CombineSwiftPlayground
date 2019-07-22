@@ -18,7 +18,9 @@ URLPublisher.flatMap { requestURL in
         .mapError { error -> RequestError in
             return RequestError.sessionError(error: error)
         }
-    }.sink { result in
+    }
+    .assertNoFailure()
+    .sink { result in
         print("Request finished!")
         _ = UIImage(data: result.data)
     }
