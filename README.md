@@ -18,9 +18,9 @@ The playground is a paged playground and is built up in several chapters
 
 More to come!
 
-## Playgrounds require Xcode beta 2 and up
-Xcode beta 1 didn't support using Combine in playgrounds. For this you need at least Xcode beta 2. MacOS Catalina is not required.
-
+## Requirements
+- Xcode 11 beta 4
+ 
 ## Example of a playground page
 ![](Assets/flatmap_playground_example.png)
 
