@@ -18,9 +18,9 @@ The playground is a paged playground and is built up in several chapters
 
 More to come!
 
-## Playgrounds require Xcode beta 2 and up
-Xcode beta 1 didn't support using Combine in playgrounds. For this you need at least Xcode beta 2. MacOS Catalina is not required.
-
+## Requirements
+- Xcode 11 beta 4
+ 
 ## Example of a playground page
 ![](Assets/flatmap_playground_example.png)
 
@@ -28,6 +28,8 @@ Xcode beta 1 didn't support using Combine in playgrounds. For this you need at l
 Some interesting resources regarding Combine.
 
 - [Getting started with the Combine framework in Swift](https://www.avanderlee.com/swift/combine/)
+- [Creating a custom Combine Publisher to extend UIKit](https://www.avanderlee.com/swift/custom-combine-publisher/)
+- [Combine debugging using operators in Swift](https://www.avanderlee.com/swift/combine-swift/)
 - [RxSwift to Apples Combine](https://medium.com/gett-engineering/rxswift-to-apples-combine-cheat-sheet-e9ce32b14c5b)
 - [WWDC 2019 s721 - Combine in practice](https://developer.apple.com/videos/play/wwdc2019/721/)
 - [WWDC 2019 s722 - Introducing Combine](https://developer.apple.com/videos/play/wwdc2019/722/)

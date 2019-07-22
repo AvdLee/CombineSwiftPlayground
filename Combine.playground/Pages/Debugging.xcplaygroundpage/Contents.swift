@@ -28,7 +28,7 @@ let subscription = subject.handleEvents(receiveSubscription: { (subscription) in
     print("Receive cancel")
 }, receiveRequest: { demand in
     print("Receive request: \(demand)")
-}).sink { _ in }
+}).replaceError(with: "Error occurred").sink { _ in }
 
 subject.send("Hello!")
 subscription.cancel()
@@ -46,7 +46,7 @@ subscription.cancel()
  Using the print operator to log messages for all publishing events.
  */
 
-let printSubscription = subject.print("Print example").sink { _ in }
+let printSubscription = subject.print("Print example").replaceError(with: "Error occurred").sink { _ in }
 
 subject.send("Hello!")
 printSubscription.cancel()

@@ -14,16 +14,18 @@ enum ExampleError: Swift.Error {
 
 let subject = PassthroughSubject<String, ExampleError>()
 subject.handleEvents(receiveSubscription: { (subscription) in
-    print("New subscription!")
-}, receiveOutput: { _ in
-    print("Received new value!")
-}, receiveCompletion: { _ in
-    print("A subscription completed")
-}, receiveCancel: {
-    print("A subscription cancelled")
-}).sink { (value) in
-    print("Subscriber one received value: \(value)")
-}
+        print("New subscription!")
+    }, receiveOutput: { _ in
+        print("Received new value!")
+    }, receiveCompletion: { _ in
+        print("A subscription completed")
+    }, receiveCancel: {
+        print("A subscription cancelled")
+    })
+    .replaceError(with: "Failure")
+    .sink { (value) in
+        print("Subscriber one received value: \(value)")
+    }
 
 subject.send("Hello!")
 subject.send("Hello again!")
