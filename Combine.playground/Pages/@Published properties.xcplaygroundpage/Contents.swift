@@ -6,10 +6,10 @@ import Combine
  ## @Published properties
  A [Property Wrapper](https://www.avanderlee.com/swift/property-wrappers/) that adds a `Publisher` to any property.
 
- _Note: Xcode beta 2 does not support running this Playground page with the @Published property unfortunately._
+ _Note: Xcode Playgrounds don't support running this Playground page with the @Published property unfortunately._
  */
-struct FormViewModel {
-    @Published var isSubmitAllowed: Bool = false
+final class FormViewModel {
+    @Published var isSubmitAllowed: Bool = true
 }
 
 final class FormViewController: UIViewController {
@@ -21,12 +21,14 @@ final class FormViewController: UIViewController {
         super.viewDidLoad()
         viewModel.$isSubmitAllowed
             .receive(on: DispatchQueue.main)
+            .print()
             .assign(to: \.isEnabled, on: submitButton)
     }
 }
 
 let formViewController = FormViewController(nibName: nil, bundle: nil)
 print("Button enabled is \(formViewController.submitButton.isEnabled)")
-formViewController.viewModel.isSubmitAllowed = true
+formViewController.viewModel.isSubmitAllowed = false
 print("Button enabled is \(formViewController.submitButton.isEnabled)")
+
 //: [Next](@next)

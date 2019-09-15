@@ -13,7 +13,7 @@ enum RequestError: Error {
 }
 
 let URLPublisher = PassthroughSubject<URL, RequestError>()
-URLPublisher.flatMap { requestURL in
+let anyCancellable = URLPublisher.flatMap { requestURL in
     return URLSession.shared.dataTaskPublisher(for: requestURL)
         .mapError { error -> RequestError in
             return RequestError.sessionError(error: error)
