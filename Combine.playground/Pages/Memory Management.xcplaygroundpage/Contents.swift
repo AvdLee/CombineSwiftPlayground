@@ -1,10 +1,10 @@
 import Foundation
-import UIKit
 import Combine
+import UIKit
 /*:
  [Previous](@previous)
  ## Memory Management
- Correct memory management using the `AnyCancellable` makes sure you're not retaining any references.
+ Correct memory management using `Cancellable` makes sure you're not retaining any references.
  */
 final class HomeViewController: UIViewController {
 
@@ -21,15 +21,13 @@ final class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let foregroundSubscriberCanceller = NotificationCenter.default.publisher(for: .NSExtensionHostWillEnterForeground)
-            .handleEvents(receiveCancel: {
-                print("Foreground subscriber cancelled!")
-            })
+        foregroundSubscriber = NotificationCenter.default
+			.publisher(for: .NSExtensionHostWillEnterForeground)
+			.print("foregroundSubscriber")
             .sink { [unowned self] _ in
                 print("Reloading tableview!")
                 self.tableView.reloadData()
             }
-        foregroundSubscriber = AnyCancellable(foregroundSubscriberCanceller)
     }
 }
 
