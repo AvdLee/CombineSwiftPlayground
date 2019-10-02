@@ -8,18 +8,15 @@ import Combine
  - Merge multiple streams into one
  - Listen to multiple publishers
  */
-enum FormError: Error { }
 
-let usernamePublisher = PassthroughSubject<String, FormError>()
-let passwordPublisher = PassthroughSubject<String, FormError>()
+// Subjects simulate input from text fields
+let usernamePublisher = PassthroughSubject<String, Never>()
+let passwordPublisher = PassthroughSubject<String, Never>()
 
 let validatedCredentials = Publishers.CombineLatest(usernamePublisher, passwordPublisher)
-    .map { (username, password) -> (String, String) in
-        return (username, password)
-    }
-    .map({ (username, password) -> Bool in
+    .map { (username, password) -> Bool in
         !username.isEmpty && !password.isEmpty && password.count > 12
-    })
+    }
     .replaceError(with: false)
     .sink { (valid) in
         print("CombineLatest: Are the credentials valid: \(valid)")
