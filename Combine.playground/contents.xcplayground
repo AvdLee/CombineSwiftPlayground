@@ -3,6 +3,8 @@
     <pages>
         <page name='What is Combine'/>
         <page name='Publishers &amp; Subscribers'/>
+        <page name='Subjects'/>
+        <page name='Operators'/>
         <page name='Rules of subscriptions'/>
         <page name='Foundation and Combine'/>
         <page name='@Published properties'/>
