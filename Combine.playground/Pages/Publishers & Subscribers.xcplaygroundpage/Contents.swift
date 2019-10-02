@@ -2,22 +2,17 @@ import Foundation
 import Combine
 /*:
  [Previous](@previous)
- ## Publishers, Operators, and Subscribers
- - A Publisher exposes values that can change on which..
- - .. change through operators and ..
- - ..a subscriber subscribes to receive all those updates
+ ## Publishers and Subscribers
+ - A Publisher _publishes_ values ...
+ - .. a subscriber _subscribes_ to receive publisher's values
 
  */
 let publisher = Just(28)
 
-// This creates a `Subscriber` on the `Just a 28` Publisher
-publisher
-    // We change the value
-    .map { number in
-        return "Antoine's age is \(number)"
-    }
-    // We subscribe using `sink`
-    .sink { (value) in
-        print(value)
+// We want to receive values from this publisher
+let subscription = publisher
+	// A sink subscribes to a publisher
+    .sink { value in
+        print("Received value: \(value)")
     }
 //: [Next](@next)
