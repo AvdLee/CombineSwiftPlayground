@@ -13,10 +13,12 @@ enum RequestError: Error {
 }
 
 let URLPublisher = PassthroughSubject<URL, RequestError>()
-let anyCancellable = URLPublisher.flatMap { requestURL in
-    return URLSession.shared.dataTaskPublisher(for: requestURL)
+
+let subscription = URLPublisher.flatMap { requestURL in
+    URLSession.shared
+		.dataTaskPublisher(for: requestURL)
         .mapError { error -> RequestError in
-            return RequestError.sessionError(error: error)
+            RequestError.sessionError(error: error)
         }
     }
     .assertNoFailure()
@@ -24,6 +26,6 @@ let anyCancellable = URLPublisher.flatMap { requestURL in
         print("Request finished!")
         _ = UIImage(data: result.data)
     }
+
 URLPublisher.send(URL(string: "https://httpbin.org/image/jpeg")!)
 //: [Next](@next)
-
