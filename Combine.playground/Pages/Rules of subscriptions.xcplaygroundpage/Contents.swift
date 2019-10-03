@@ -16,7 +16,7 @@ enum ExampleError: Swift.Error {
 let subject = PassthroughSubject<String, ExampleError>()
 
 // The handleEvents operator lets you intercept
-// all stages of a subscription lifecycle
+// All stages of a subscription lifecycle
 subject.handleEvents(receiveSubscription: { (subscription) in
         print("New subscription!")
     }, receiveOutput: { _ in
