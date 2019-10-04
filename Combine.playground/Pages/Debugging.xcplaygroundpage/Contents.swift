@@ -18,17 +18,18 @@ enum ExampleError: Swift.Error {
  Can be used combined with breakpoints for further insights.
  */
 let subject = PassthroughSubject<String, ExampleError>()
-let subscription = subject.handleEvents(receiveSubscription: { (subscription) in
-    print("Receive subscription")
-}, receiveOutput: { output in
-    print("Received output: \(output)")
-}, receiveCompletion: { _ in
-    print("Receive completion")
-}, receiveCancel: {
-    print("Receive cancel")
-}, receiveRequest: { demand in
-    print("Receive request: \(demand)")
-}).replaceError(with: "Error occurred").sink { _ in }
+let subscription = subject
+	.handleEvents(receiveSubscription: { (subscription) in
+		print("Receive subscription")
+	}, receiveOutput: { output in
+		print("Received output: \(output)")
+	}, receiveCompletion: { _ in
+		print("Receive completion")
+	}, receiveCancel: {
+		print("Receive cancel")
+	}, receiveRequest: { demand in
+		print("Receive request: \(demand)")
+	}).replaceError(with: "Error occurred").sink { _ in }
 
 subject.send("Hello!")
 subscription.cancel()
@@ -46,7 +47,10 @@ subscription.cancel()
  Using the print operator to log messages for all publishing events.
  */
 
-let printSubscription = subject.print("Print example").replaceError(with: "Error occurred").sink { _ in }
+let printSubscription = subject
+	.print("Print example")
+	.replaceError(with: "Error occurred")
+	.sink { _ in }
 
 subject.send("Hello!")
 printSubscription.cancel()

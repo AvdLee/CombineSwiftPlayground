@@ -4,7 +4,7 @@ import Combine
 /*:
  [Previous](@previous)
  ## Future and Promises
- A `Publishers.Future` creates a new `Publisher` that eventually produces one value and then finishes or fails.
+ A `Publishers.Future` creates a new `Publisher` that eventually produces one value and then finishes, or fails.
  - Allows you to call custom methods and return a Result.success or Result.failure
  */
 struct User {
@@ -41,10 +41,10 @@ fetchUserPublisher
         }
     }
     .map { user in user.name }
-    .catch({ (error) -> Just<String> in
+    .catch { (error) -> Just<String> in
         print("Error occurred: \(error)")
         return Just("Not found")
-    })
+    }
     .sink { result in
         print("User is \(result)")
     }

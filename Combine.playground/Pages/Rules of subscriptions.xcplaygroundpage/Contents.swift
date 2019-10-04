@@ -4,6 +4,7 @@
  - A subscriber will receive a _single_ subscription
  - _Zero_ or _more_ values can be published
  - At most _one_ completion will be called
+ - After completion, nothing more is received
  */
 import Combine
 import UIKit
@@ -13,6 +14,9 @@ enum ExampleError: Swift.Error {
 }
 
 let subject = PassthroughSubject<String, ExampleError>()
+
+// The handleEvents operator lets you intercept
+// All stages of a subscription lifecycle
 subject.handleEvents(receiveSubscription: { (subscription) in
         print("New subscription!")
     }, receiveOutput: { _ in
@@ -24,7 +28,7 @@ subject.handleEvents(receiveSubscription: { (subscription) in
     })
     .replaceError(with: "Failure")
     .sink { (value) in
-        print("Subscriber one received value: \(value)")
+        print("Subscriber received value: \(value)")
     }
 
 subject.send("Hello!")
