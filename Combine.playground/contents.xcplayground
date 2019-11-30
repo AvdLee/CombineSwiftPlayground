@@ -5,10 +5,10 @@
         <page name='Publishers &amp; Subscribers'/>
         <page name='Subjects'/>
         <page name='Subscriptions'/>
+        <page name='Cancellation &amp; Memory Management'/>
         <page name='Operators'/>
         <page name='Foundation and Combine'/>
         <page name='@Published properties'/>
-        <page name='Memory Management'/>
         <page name='Flatmap and error types'/>
         <page name='Combining Publishers'/>
         <page name='Future and Promises'/>
