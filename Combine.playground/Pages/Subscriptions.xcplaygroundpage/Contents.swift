@@ -1,13 +1,15 @@
-/*:
- [Previous](@previous)
- ## The rules of a subscription
- - A subscriber will receive a _single_ subscription
- - _Zero_ or _more_ values can be published
- - At most _one_ completion will be called
- - After completion, nothing more is received
- */
+//: [Previous](@previous)
+
 import Combine
 import UIKit
+
+/*:
+ ## Subscription details
+ - A subscriber will receive a _single_ subscription
+ - _Zero_ or _more_ values can be published
+ - At most _one_ {completion, error} will be called
+ - After completion, nothing more is received
+ */
 
 enum ExampleError: Swift.Error {
     case somethingWentWrong
@@ -34,7 +36,7 @@ subject.handleEvents(receiveSubscription: { (subscription) in
 subject.send("Hello!")
 subject.send("Hello again!")
 subject.send("Hello for the last time!")
-subject.send(completion: Subscribers.Completion<ExampleError>.failure(ExampleError.somethingWentWrong))
+subject.send(completion: .failure(.somethingWentWrong))
 subject.send("Hello?? :(")
 
 //: [Next](@next)
