@@ -8,6 +8,7 @@
         <page name='Cancellation &amp; Memory Management'/>
         <page name='Simple Operators'/>
         <page name='Combining Operators'/>
+        <page name='Scheduling'/>
         <page name='Foundation and Combine'/>
         <page name='@Published properties'/>
         <page name='Flatmap and error types'/>
