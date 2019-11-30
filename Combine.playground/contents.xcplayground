@@ -10,8 +10,8 @@
         <page name='Combining Operators'/>
         <page name='Scheduling'/>
         <page name='Foundation and Combine'/>
-        <page name='@Published properties'/>
         <page name='Flatmap and error types'/>
+        <page name='@Published properties'/>
         <page name='Future and Promises'/>
         <page name='Custom UIKit Publishers'/>
         <page name='Debugging'/>
