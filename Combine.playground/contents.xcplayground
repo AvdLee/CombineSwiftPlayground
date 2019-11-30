@@ -13,7 +13,7 @@
         <page name='Flatmap and error types'/>
         <page name='@Published properties'/>
         <page name='Future and Promises'/>
-        <page name='Custom UIKit Publishers'/>
         <page name='Debugging'/>
+        <page name='Custom UIKit Publishers'/>
     </pages>
 </playground>

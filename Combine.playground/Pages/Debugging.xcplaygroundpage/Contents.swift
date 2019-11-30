@@ -1,22 +1,25 @@
+//: [Previous](@previous)
+
 import Foundation
 import UIKit
 import Combine
 /*:
- [Previous](@previous)
- ## Debugging
- Operators which help to debug Combine streams and implementations.
+## Debugging
+Operators which help debug Combine publishers
 
- More info: [https://www.avanderlee.com/debugging/combine-swift/‎](https://www.avanderlee.com/debugging/combine-swift/‎)
- */
+More info: [https://www.avanderlee.com/debugging/combine-swift/‎](https://www.avanderlee.com/debugging/combine-swift/‎)
+*/
 
 enum ExampleError: Swift.Error {
-    case somethingWentWrong
+	case somethingWentWrong
 }
 
 /*:
- #### Handling events
- Can be used combined with breakpoints for further insights.
- */
+### Handling events
+Can be used combined with breakpoints for further insights.
+- exposes all the possible events happening inside a publisher / subscription couple
+- very useful when developing your own publishers
+*/
 let subject = PassthroughSubject<String, ExampleError>()
 let subscription = subject
 	.handleEvents(receiveSubscription: { (subscription) in
@@ -43,9 +46,9 @@ subscription.cancel()
 //subject.send(completion: .finished)
 
 /*:
- #### Print
- Using the print operator to log messages for all publishing events.
- */
+### `print(_:)`
+Prints log messages for every event
+*/
 
 let printSubscription = subject
 	.print("Print example")
@@ -61,4 +64,11 @@ printSubscription.cancel()
 // Print example: receive value: (Hello!)
 // Print example: receive cancel
 
-//: [Next](@next)
+/*:
+### `breakpoint(_:)`
+Conditionally break in the debugger when specific values pass through
+*/
+let breakSubscription = subject
+	.breakpoint(receiveOutput: { value in
+	  value == "Hello!"
+	})
