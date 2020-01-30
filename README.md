@@ -34,3 +34,8 @@ Some interesting resources regarding Combine.
 - [WWDC 2019 s721 - Combine in practice](https://developer.apple.com/videos/play/wwdc2019/721/)
 - [WWDC 2019 s722 - Introducing Combine](https://developer.apple.com/videos/play/wwdc2019/722/)
 - [Open Source insight of Combine](https://github.com/broadwaylamb/OpenCombine)
+
+## Interesting Frameworks
+Some interesting frameworks regarding Combine.
+
+- [Hover - Async network layer with Combine](https://github.com/onurhuseyincantay/Hover)
