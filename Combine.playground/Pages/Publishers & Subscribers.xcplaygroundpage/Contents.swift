@@ -26,7 +26,6 @@ let subscription1 = publisher1.sink { value in
 ## Example 2
 "publish" a series of values immediately
  */
-print("")
 let publisher2 = [1,2,3,4,5].publisher
 
 let subscription2 = publisher2
