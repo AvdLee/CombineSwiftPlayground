@@ -22,7 +22,7 @@ final class FormViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		// subscribe to an @Published property using the $ wrapped accessor
+		// subscribe to a @Published property using the $ wrapped accessor
         viewModel.$isSubmitAllowed
             .receive(on: DispatchQueue.main)
             .print()
