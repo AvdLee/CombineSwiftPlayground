@@ -39,7 +39,7 @@ print("Button enabled is \(formViewController.submitButton.isEnabled)")
 
 /*:
 ## ObservableObject
-- a class inheriting from `ObservableObject` automagically synthesize an observable
+- a class inheriting from `ObservableObject` automagically synthesizes an observable
 - ... which fires whenever any of the `@Published` properties of the class change
 
 */
