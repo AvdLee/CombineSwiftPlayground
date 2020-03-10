@@ -4,15 +4,16 @@
         <page name='What is Combine'/>
         <page name='Publishers &amp; Subscribers'/>
         <page name='Subjects'/>
-        <page name='Operators'/>
-        <page name='Rules of subscriptions'/>
+        <page name='Subscriptions'/>
+        <page name='Cancellation &amp; Memory Management'/>
+        <page name='Simple Operators'/>
+        <page name='Combining Operators'/>
+        <page name='Scheduling'/>
         <page name='Foundation and Combine'/>
-        <page name='@Published properties'/>
-        <page name='Memory Management'/>
         <page name='Flatmap and error types'/>
-        <page name='Combining Publishers'/>
+        <page name='@Published properties'/>
         <page name='Future and Promises'/>
-        <page name='Custom UIKit Publishers'/>
         <page name='Debugging'/>
+        <page name='Custom UIKit Publishers'/>
     </pages>
 </playground>
