@@ -6,7 +6,7 @@ import UIKit
 
 /*:
 # Cancellation
-A suscription returns a `Cancellable` object
+A subscription returns a `Cancellable` object
 
 Correct memory management using `Cancellable` makes sure you're not retaining any references.
 */
