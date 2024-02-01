@@ -87,7 +87,7 @@ subscription.cancel()
  */
 extension CombineCompatible where Self: UISwitch {
     /// As the `UISwitch.isOn` property does not support KVO this publisher can become handy.
-    /// The only downside is that it does not work with programmatically changing `isOn`, but it only responds to UI changes.
+    /// The only downside is that it does not work with programmatically changing `isOn`, it only responds to UI changes.
     var isOnPublisher: AnyPublisher<Bool, Never> {
         return publisher(for: [.allEditingEvents, .valueChanged]).map { $0.isOn }.eraseToAnyPublisher()
     }
@@ -105,4 +105,3 @@ switcher.isOnPublisher.assign(to: \.isEnabled, on: submitButton)
 switcher.isOn = true
 switcher.sendActions(for: .valueChanged)
 print(submitButton.isEnabled)
-//: [Next](@next)

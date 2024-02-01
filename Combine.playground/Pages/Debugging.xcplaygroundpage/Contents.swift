@@ -72,3 +72,5 @@ let breakSubscription = subject
 	.breakpoint(receiveOutput: { value in
 	  value == "Hello!"
 	})
+
+//: [Next](@next)
