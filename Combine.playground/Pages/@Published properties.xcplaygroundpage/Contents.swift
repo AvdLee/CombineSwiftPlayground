@@ -8,7 +8,7 @@ import Combine
  ## @Published properties
  A [Property Wrapper](https://www.avanderlee.com/swift/property-wrappers/) that adds a `Publisher` to any property.
 
- _Note: Xcode Playgrounds don't support running this Playground page with the @Published property unfortunately._
+ _Note: Xcode Playgrounds doesn't support running this Playground page with the @Published property unfortunately._
  */
 final class FormViewModel {
     @Published var isSubmitAllowed: Bool = true
